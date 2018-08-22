@@ -1,12 +1,20 @@
+import java.util.*
 
 fun main(args: Array<String>) {
 
-    println("Starting to create a coffee")
-    println("Grinding coffee beans")
-    println("Boiling water")
-    println("Mixing boiled water with crushed coffee beans")
-    println("Pouring coffee into the cup")
-    println("Pouring some milk into the cup")
-    println("Coffee is ready!")
+    print("Write how many cups of coffee you will need: ")
+
+    val scanner = Scanner(System.`in`)
+    val cupsAmount = scanner.nextInt()
+
+    println("For $cupsAmount cups of coffee you will need:")
+
+    val waterAmount = 200 * cupsAmount
+    val milkAmount = 50 * cupsAmount
+    val beansAmount = 15 * cupsAmount
+
+    println("$waterAmount ml of water")
+    println("$milkAmount ml of milk")
+    println("$beansAmount g of coffee beans")
 
 }
