@@ -18,8 +18,8 @@ fun printSupplies() {
 fun processBuy() {
     val scanner = Scanner(System.`in`)
 
-    print("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino: ")
-    val answer = scanner.nextInt()
+    print("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu: ")
+    val answer = scanner.nextLine()
 
     val requiredWater: Int
     val requiredMilk: Int
@@ -27,29 +27,53 @@ fun processBuy() {
     val requiredMoney: Int
 
     when (answer) {
-        1 -> {
+        "1" -> {
             requiredWater = 250
             requiredMilk = 0
             requiredCoffeeBeans = 16
             requiredMoney = 4
         }
-        2 -> {
+        "2" -> {
             requiredWater = 350
             requiredMilk = 75
             requiredCoffeeBeans = 20
             requiredMoney = 7
         }
-        3 -> {
+        "3" -> {
             requiredWater = 200
             requiredMilk = 100
             requiredCoffeeBeans = 12
             requiredMoney = 6
+        }
+        "back" -> {
+            return
         }
         else -> {
             println("Bad command!")
             return
         }
     }
+
+    when {
+        requiredWater > waterAmount -> {
+            println("Sorry, not enough water!")
+            return
+        }
+        requiredMilk > milkAmount -> {
+            println("Sorry, not enough milk!")
+            return
+        }
+        requiredCoffeeBeans > coffeeBeansAmount -> {
+            println("Sorry, not enough coffee beans!")
+            return
+        }
+        disposableCupsAmount < 1 -> {
+            println("Sorry, not enough disposable cups!")
+            return
+        }
+    }
+
+    println("I have enough resources, making you a coffee!")
 
     waterAmount -= requiredWater
     milkAmount -= requiredMilk
