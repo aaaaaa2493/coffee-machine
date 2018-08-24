@@ -54,7 +54,7 @@ fun processBuy() {
     waterAmount -= requiredWater
     milkAmount -= requiredMilk
     coffeeBeansAmount -= requiredCoffeeBeans
-    moneyAmount -= requiredMoney
+    moneyAmount += requiredMoney
     disposableCupsAmount -= 1
 }
 
@@ -87,6 +87,7 @@ fun processTake() {
 fun main(args: Array<String>) {
 
     printSupplies()
+    println()
 
     val scanner = Scanner(System.`in`)
     print("Write action (buy, fill, take): ")
@@ -101,6 +102,7 @@ fun main(args: Array<String>) {
         }
     }
 
+    println()
     printSupplies()
 
 }
