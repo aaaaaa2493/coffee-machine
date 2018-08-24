@@ -86,23 +86,22 @@ fun processTake() {
 
 fun main(args: Array<String>) {
 
-    printSupplies()
-    println()
+    while (true) {
+        printSupplies()
+        println()
 
-    val scanner = Scanner(System.`in`)
-    print("Write action (buy, fill, take): ")
-    val answer = scanner.nextLine()
+        val scanner = Scanner(System.`in`)
+        print("Write action (buy, fill, take, exit): ")
+        val answer = scanner.nextLine()
 
-    when (answer){
-        "buy" -> processBuy()
-        "fill" -> processFill()
-        "take" -> processTake()
-        else -> {
-            println("Bad action!")
+        when (answer){
+            "buy" -> processBuy()
+            "fill" -> processFill()
+            "take" -> processTake()
+            "exit" -> return
+            else -> {
+                println("Bad action!")
+            }
         }
     }
-
-    println()
-    printSupplies()
-
 }
