@@ -1,6 +1,8 @@
 import java.util.*
 
-var waterAmount = 1200
+
+
+var waterAmount = 400
 var milkAmount = 540
 var coffeeBeansAmount = 120
 var disposableCupsAmount = 9
@@ -18,7 +20,7 @@ fun printSupplies() {
 fun processBuy() {
     val scanner = Scanner(System.`in`)
 
-    print("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu: ")
+    print("What do you want to buy? \n1 - espresso, \n2 - latte, \n3 - cappuccino, \nback - to main menu: ")
     val answer = scanner.nextLine()
 
     val requiredWater: Int
@@ -108,24 +110,28 @@ fun processTake() {
     moneyAmount = 0
 }
 
+fun handle(line: String) {
+    when (line){
+        "buy" -> processBuy()
+        "fill" -> processFill()
+        "take" -> processTake()
+        "remaining" -> printSupplies()
+        "exit" -> return
+        else -> println("Bad action!")
+    }
+    println()
+}
+
+
 fun main(args: Array<String>) {
-
+    val scanner = Scanner(System.`in`)
     while (true) {
-        printSupplies()
-        println()
+        print("Write action (buy, fill, take, remaining, exit): ")
+        val request = scanner.nextLine()
 
-        val scanner = Scanner(System.`in`)
-        print("Write action (buy, fill, take, exit): ")
-        val answer = scanner.nextLine()
-
-        when (answer){
-            "buy" -> processBuy()
-            "fill" -> processFill()
-            "take" -> processTake()
+        when (request){
             "exit" -> return
-            else -> {
-                println("Bad action!")
-            }
+            else -> handle(request)
         }
     }
 }
